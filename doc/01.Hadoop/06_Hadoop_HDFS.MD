@@ -128,6 +128,20 @@ hadoop fs -setrep 10 /jinguo/shuguo.txt
 
 # API
 
+### 客户端环境准备
+
+1. 找到资料包路径下的 Windows 依赖文件夹，拷贝 hadoop-3.1.0 到非中文路径（比如 d:\）
+2. 配置HADOOP_HOME 环境变量
+3. 配置Path 环境变量。
+
+**注意：如果环境变量不起作用，可以重启电脑试试。**
+
+验证 Hadoop 环境变量是否正常。双击 winutils.exe，如果报如下错误。说明缺少微软运行库（正版系统往往有这个问题）。再资料包里面有对应的微软运行库安装包双击安装即可。
+
+![](../images/hadoop-20.jpg)
+
+### 代码
+
 ```java
 package top.damoncai.hadoop.hdfs;
 
