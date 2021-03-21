@@ -1,0 +1,10 @@
+1. hadoop 30h
+2. hive 21h
+3. HA 2h
+4. Flume 9h
+5. Hbase 15.5h
+6. Sqoop 1h
+7. Azkaban 2h
+7. Oozie: 2h
+8. Spark 31h
+9. Flink 37h
