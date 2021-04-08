@@ -11,6 +11,7 @@
     <modules>
         <module>bigdata_01_hadoop</module>
         <module>bigdata_02_hive</module>
+        <module>bigdata_03_flume</module>
     </modules>
 
 

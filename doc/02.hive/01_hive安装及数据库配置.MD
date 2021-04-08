@@ -182,7 +182,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
 3. 启动beeline客户端（需要多等待一会）
 
    ```shell
-   bin/beeline -u jdbc:hive2://hadoop01:10000 -n root
+   bin/beeline -u jdbc:hive2://master:10000 -n damoncai
    ```
 
 4. 看到如下界面
