@@ -467,11 +467,11 @@ TextInputFormat 是默认的 FileInputFormat 实现类。按行读取每条记�
 
 			 1. MapTask 收集我们的 map()方法输出的 kv 对，放到内存缓冲区中
    			 2. 从内存缓冲区不断溢出本地磁盘文件，可能会溢出多个文件
-   			 3. 多个溢出文件会被合并成大的溢出文件
-   			 4. 在溢出过程及合并的过程中，都要调用 Partitioner 进行分区和针对 key 进行排序
-   			 5. ReduceTask 根据自己的分区号，去各个 MapTask 机器上取相应的结果分区数据
-   			 6. ReduceTask 会抓取到同一个分区的来自不同 MapTask 的结果文件，ReduceTask 会将这些文件再进行合并（归并排序）
-   			 7. 合并成大文件后，Shuffle 的过程也就结束了，后面进入 ReduceTask 的逻辑运算过程（从文件中取出一个一个的键值对 Group，调用用户自定义的 reduce()方法）
+      			 3. 多个溢出文件会被合并成大的溢出文件
+         			 4. 在溢出过程及合并的过程中，都要调用 Partitioner 进行分区和针对 key 进行排序
+            			 5. ReduceTask 根据自己的分区号，去各个 MapTask 机器上取相应的结果分区数据
+               			 6. ReduceTask 会抓取到同一个分区的来自不同 MapTask 的结果文件，ReduceTask 会将这些文件再进行合并（归并排序）
+                  			 7. 合并成大文件后，Shuffle 的过程也就结束了，后面进入 ReduceTask 的逻辑运算过程（从文件中取出一个一个的键值对 Group，调用用户自定义的 reduce()方法）
 
 **注意：**
 
@@ -678,6 +678,7 @@ conf.setClass("mapreduce.map.output.compress.codec", BZip2Codec.class,Compressio
 FileOutputFormat.setCompressOutput(job, true);
 
 // 设置压缩的方式
-FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class); FileOutputFormat.setOutputCompressorClass(job, GzipCodec.class); FileOutputFormat.setOutputCompressorClass(job,DefaultCodec.class);
+FileOutputFormat.setOutputCompressorClass(job, BZip2Codec.class);
+FileOutputFormat.setOutputCompressorClass(job, GzipCodec.class); FileOutputFormat.setOutputCompressorClass(job,DefaultCodec.class);
 ```
 

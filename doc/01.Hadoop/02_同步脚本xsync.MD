@@ -119,7 +119,7 @@ chmod +x xsync
 
 
 
-**生成公钥和私钥**
+**生成公钥和私钥(三台机器上都配置)**
 
 ```shell
 cd 
@@ -129,11 +129,25 @@ ssh-keygen -t rsa
 然后敲（三个回车），就会生成两个文件 id_rsa（私钥）、id_rsa.pub（公钥）
 ```
 
-**将公钥拷贝到需要免登录目标机器上**
+**将公钥拷贝到需要免登录目标机器上(三台机器上都配置)**
 
 ```shell
 ssh-copy-id hadoop102
 ssh-copy-id hadoop103
 ssh-copy-id hadoop104
 ```
+
+# 期望脚本在任何路径都能使用（脚本放在声明了全局环境变量的路径）
+
+1. 将脚本拷贝到/bin目录下
+
+2. 赋予执行权限
+
+   ```shell
+   chmod +x xsync
+   ```
+
+   
+
+
 

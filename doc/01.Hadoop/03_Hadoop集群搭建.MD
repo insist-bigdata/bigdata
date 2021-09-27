@@ -41,7 +41,7 @@ Hadoop 配置文件分两类：默认配置文件和自定义配置文件，只�
  <!-- 指定 NameNode 的地址 -->
  <property>
  <name>fs.defaultFS</name>
- <value>hdfs://hadoop102:8020</value>
+ <value>hdfs://ha01.prdigital.cn:8020</value>
  </property>
  <!-- 指定 hadoop 数据的存储目录 -->
  <property>
@@ -51,7 +51,7 @@ Hadoop 配置文件分两类：默认配置文件和自定义配置文件，只�
  <!-- 配置 HDFS 网页登录使用的静态用户为 atguigu -->
  <property>
  <name>hadoop.http.staticuser.user</name>
- <value>atguigu</value>
+ <value>root</value>
  </property>
 </configuration>
 ```
@@ -67,12 +67,12 @@ Hadoop 配置文件分两类：默认配置文件和自定义配置文件，只�
 <!-- nn web 端访问地址-->
 <property>
  <name>dfs.namenode.http-address</name>
- <value>hadoop102:9870</value>
+ <value>ha01.prdigital.cn:9870</value>
  </property>
 <!-- 2nn web 端访问地址-->
  <property>
  <name>dfs.namenode.secondary.http-address</name>
- <value>hadoop104:9868</value>
+ <value>ha03.prdigital.cn:9868</value>
  </property>
 </configuration>
 ```
@@ -93,7 +93,7 @@ Hadoop 配置文件分两类：默认配置文件和自定义配置文件，只�
  <!-- 指定 ResourceManager 的地址-->
  <property>
  <name>yarn.resourcemanager.hostname</name>
- <value>hadoop103</value>
+ <value>ha02.prdigital.cn</value>
  </property>
  <!-- 环境变量的继承 -->
  <property>
@@ -210,12 +210,12 @@ hadoop fs -get /jdk-8u212-linuxx64.tar.gz ./
 <!-- 历史服务器端地址 -->
 <property>
  <name>mapreduce.jobhistory.address</name>
- <value>hadoop102:10020</value>
+ <value>ha01.prdigital.cn:10020</value>
 </property>
 <!-- 历史服务器 web 端地址 -->
 <property>
  <name>mapreduce.jobhistory.webapp.address</name>
- <value>hadoop102:19888</value>
+ <value>ha01.prdigital.cn:19888</value>
 </property>
 ```
 
@@ -357,4 +357,8 @@ hdfs --daemon start/stop namenode/datanode/secondarynamenode
 ```shell
 yarn --daemon start/stop resourcemanager/nodemanager
 ```
+
+
+
+# 集群时间同步
 

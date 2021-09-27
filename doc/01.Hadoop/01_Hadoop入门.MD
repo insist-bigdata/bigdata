@@ -47,13 +47,19 @@
 
 ### JDK环境
 
-### 安装Hadoop
+### 安装Hadoop(https://archive.apache.org/dist/hadoop/common/)
 
-1. 上传文件
+1. 前置安装
 
-2. 解压文件
+   ```shell
+   yum install -y epel-release net-tools
+   ```
 
-3. 配置环境变量
+2. 上传文件
+
+3. 解压文件
+
+4. 配置环境变量
 
    ```shell
    #HADOOP_HOME
@@ -62,10 +68,17 @@
    export PATH=$PATH:$HADOOP_HOME/sbin
    ```
 
-4. 刷新配置
+5. 刷新配置
 
    ```shell
    source /etc/profile
    ```
 
+6. 查看版本
+
+   ```shell
+   hadoop -v
+   ```
+
    
+
