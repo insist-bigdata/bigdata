@@ -79,7 +79,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
        <!-- jdbc 连接的 URL -->
        <property>
        <name>javax.jdo.option.ConnectionURL</name>
-       <value>jdbc:mysql://192.168.111.91:33336/metastore?useSSL=false</value>
+       <value>jdbc:mysql://192.168.111.10:3306/metastore?useSSL=false</value>
       </property>
        <!-- jdbc 连接的 Driver-->
        <property>
@@ -94,7 +94,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
        <!-- jdbc 连接的 password -->
        <property>
        <name>javax.jdo.option.ConnectionPassword</name>
-       <value>GGSbKL3N1ninKCrZ</value>
+       <value>prinfo</value>
       </property>
        <!-- Hive 元数据存储版本的验证 -->
        <property>
@@ -144,7 +144,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
     </property>
    ```
 
-2. 启动metastore
+2. 启动metastore（注意: 启动后窗口不能再操作，需打开一个新的 shell 窗口做别的操作）
 
    ```shell
    hive --service metastore
@@ -164,7 +164,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
    <!-- 指定 hiveserver2 连接的 host -->
     <property>
     <name>hive.server2.thrift.bind.host</name>
-     <value>hadoop01</value>
+     <value>ha01.prdigital.cn</value>
     </property>
     <!-- 指定 hiveserver2 连接的端口号 -->
     <property>
@@ -182,7 +182,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
 3. 启动beeline客户端（需要多等待一会）
 
    ```shell
-   bin/beeline -u jdbc:hive2://master:10000 -n damoncai
+   bin/beeline -u jdbc:hive2://ha01.prdigital.cn:10000 -n damoncai
    ```
 
 4. 看到如下界面

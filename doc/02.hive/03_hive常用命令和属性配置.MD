@@ -63,6 +63,8 @@ usage: hive
 
 ### 打印当前库和表头
 
+在 hive-site.xml 中加入如下两个配置：
+
 ```xml
  <property>
  	<name>hive.cli.print.header</name>

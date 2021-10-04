@@ -77,7 +77,7 @@ Hive 的原子数据类型是可以进行隐式转换的，类似于 Java 的类
 create table test(
 name string,
 friends array<string>,
-    children map<string, int>,
+children map<string, int>,
 address struct<street:string, city:string> )
 row format delimited fields terminated by ','
 collection items terminated by '_'

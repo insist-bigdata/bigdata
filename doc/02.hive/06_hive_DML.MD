@@ -202,7 +202,7 @@ Sort by 为每个 reducer 产生一个排序文件。每个 Reducer 内部进行
 set mapreduce.job.reduces=3;
 
 #查看reduce个数
-set mapreduce.job.reduces;
+
 ```
 
 ### Distribute By

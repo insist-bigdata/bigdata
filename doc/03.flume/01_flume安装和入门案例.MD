@@ -172,6 +172,8 @@
 
 4. hadoop web查看文件
 
+**注意：**有数据丢失或者重复问题
+
 # 实时监控目录下多个文件(Spooldir Source)
 
 ![](./images/5.jpg)
