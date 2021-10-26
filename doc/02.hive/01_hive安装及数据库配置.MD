@@ -140,7 +140,7 @@ Hive 默认使用的元数据库为 derby，开启 Hive 之后就会占用元数
    <!-- 指定存储元数据要连接的地址 -->
     <property>
     	<name>hive.metastore.uris</name>
-    	<value>thrift://hadoop01:9083</value>
+    	<value>thrift://ha01.prdigital.cn:9083</value>
     </property>
    ```
 
