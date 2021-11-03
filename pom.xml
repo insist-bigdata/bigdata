@@ -13,6 +13,7 @@
         <module>bigdata_02_hive</module>
         <module>bigdata_03_flume</module>
         <module>bigdata_04_hbase</module>
+        <module>bigdata_05_sqoop</module>
     </modules>
 
 
