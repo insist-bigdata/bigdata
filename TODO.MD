@@ -5,6 +5,7 @@
 5. Hbase 15.5h
 6. Sqoop 1h
 7. Azkaban 2h
-7. Oozie: 2h
-8. Spark 31h
-9. Flink 37h
+8. Scala 25h
+9. Oozie: 2h
+10. Spark 31h
+11. Flink 37h

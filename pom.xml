@@ -14,6 +14,7 @@
         <module>bigdata_03_flume</module>
         <module>bigdata_04_hbase</module>
         <module>bigdata_05_sqoop</module>
+        <module>bigdata_06_azkaban</module>
     </modules>
 
 
