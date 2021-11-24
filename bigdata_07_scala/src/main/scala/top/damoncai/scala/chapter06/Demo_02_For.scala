@@ -67,5 +67,14 @@ object Demo_02_For {
     {
       println("i=" + i + ",j=" + j)
     }
+
+    println("=======================  九成妖塔  =======================")
+    for (i <- 1 to 9; star = 2 * i -1 ; space = 9 -i){
+      println((" "*space) + ("*"*star));
+    }
+
+    println("=======================  for循环返回值  =======================")
+    var res = for (i <- 1 to 4)  yield i
+    println(res)
   }
 }
