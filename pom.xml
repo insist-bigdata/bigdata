@@ -16,6 +16,7 @@
         <module>bigdata_05_sqoop</module>
         <module>bigdata_06_azkaban</module>
         <module>bigdata_07_scala</module>
+        <module>bigdata_08_spark</module>
     </modules>
 
 
