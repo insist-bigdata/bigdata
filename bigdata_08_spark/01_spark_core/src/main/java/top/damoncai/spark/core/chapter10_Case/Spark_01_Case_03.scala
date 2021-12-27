@@ -22,20 +22,20 @@ object Spark_01_Case_03 {
      */
 
     val rdd: RDD[String] = sc.textFile("bigdata_08_spark/datas/user_visit_action.txt")
-    val flaMapRDD: RDD[(String, (Int, Int, Int))] = rdd.flatMap(line => {
+    rdd.foreach(line => {
       val arr: Array[String] = line.split("_")
       if (arr(6) != "-1") {
         acc.add((arr(6),"point"))
         List((arr(6), (1, 0, 0)))
       } else if (arr(8) != "null") {
         val orders: Array[String] = arr(8).split(",")
-        orders.map(item => {
+        orders.foreach(item => {
           acc.add(item,"order")
           (item, (0, 1, 0))
         })
       } else if (arr(11) != "null") {
         val pays: Array[String] = arr(11).split(",")
-        pays.map(item => {
+        pays.foreach(item => {
           acc.add((item,"pay"))
           (item, (0, 0, 1))
         })
@@ -43,7 +43,6 @@ object Spark_01_Case_03 {
         Nil
       }
     })
-    flaMapRDD.collect()
    acc.value.toList.sortWith((e1,e2) => {
      if(e1._2.point > e2._2.point) {
        true
@@ -107,7 +106,6 @@ object Spark_01_Case_03 {
     }
 
     override def add(v: (String, String)): Unit = {
-      println("ac")
       v match {
         case (id,ac) => {
           val action: OneAction = wcMap.getOrElse(id, OneAction(0, 0, 0))
