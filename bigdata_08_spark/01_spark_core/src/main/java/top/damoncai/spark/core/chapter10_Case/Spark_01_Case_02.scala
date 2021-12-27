@@ -1,10 +1,9 @@
 package top.damoncai.spark.core.chapter10_Case
 
 import org.apache.spark.rdd.RDD
-import org.apache.spark.util.LongAccumulator
 import org.apache.spark.{SparkConf, SparkContext}
 
-object Spark_01_Case_01 {
+object Spark_01_Case_02 {
 
   def main(args: Array[String]): Unit = {
 
@@ -20,30 +19,36 @@ object Spark_01_Case_01 {
       (arr(6),arr(7), arr(8), arr(11))
     })
     // 点击数
-    val pointRdd: RDD[(String, Int)] = baseRDD.filter(_._1 != "-1").map(item => (item._1, 1)).reduceByKey(_ + _)
+    val pointRdd: RDD[(String, (Int, Int, Int))] = baseRDD.filter(_._1 != "-1").map(item => (item._1, 1))
+      .reduceByKey(_ + _)
+      .map(item => {
+        (item._1, (item._2, 0, 0))
+      })
     // 下单数
-    val orderRdd: RDD[(String, Int)] = baseRDD.filter(_._3 != "null").flatMap(item => {
+    val orderRDD: RDD[(String, (Int, Int, Int))] = baseRDD.filter(_._3 != "null").flatMap(item => {
       val arr: Array[String] = item._3.split(",")
       arr.map((_, 1))
-    }).reduceByKey(_+_)
+    }).reduceByKey(_ + _)
+      .map(item => {
+        (item._1, (0, item._2, 0))
+      })
+
     // 支付数
-    val payRdd: RDD[(String, Int)] = baseRDD.filter(_._4 != "null").flatMap(item => {
+    val payRdd:RDD[(String, (Int, Int, Int))] = baseRDD.filter(_._4 != "null").flatMap(item => {
       val arr: Array[String] = item._4.split(",")
       arr.map((_, 1))
     }).reduceByKey(_+_)
+      .map(item => {
+        (item._1, ( 0, 0,item._2))
+      })
+
     //组合数据
-    val cogroupRdd: RDD[(String, (Iterable[Int], Iterable[Int], Iterable[Int]))] = pointRdd.cogroup(orderRdd, payRdd)
-    val res: Array[(String, (Int, Int, Int))] = cogroupRdd.mapValues(item =>
-      item match {
-        case (it1, it2, it3) => {
-          (
-            if (it1.iterator.hasNext) it1.iterator.next() else 0,
-            if (it2.iterator.hasNext) it2.iterator.next() else 0,
-            if (it3.iterator.hasNext) it3.iterator.next() else 0
-          )
-        }
-      }
-    ).sortBy(_._2, false).take(10)
+    val unionRDD: RDD[(String, (Int, Int, Int))] = pointRdd.union(orderRDD).union(payRdd)
+    val res: Array[(String, (Int, Int, Int))] = unionRDD.reduceByKey((e1, e2) => {
+      (
+        e1._1 + e2._1, e1._2 + e2._2, e1._3 + e2._3
+      )
+    }).sortBy(_._2,false).take(10)
 
     res.foreach(println)
     sc.stop()
