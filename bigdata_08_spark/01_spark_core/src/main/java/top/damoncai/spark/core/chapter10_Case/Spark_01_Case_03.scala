@@ -30,27 +30,43 @@ object Spark_01_Case_03 {
       } else if (arr(8) != "null") {
         val orders: Array[String] = arr(8).split(",")
         orders.map(item => {
-          acc.add((arr(6),"order"))
+          acc.add(item,"order")
           (item, (0, 1, 0))
         })
       } else if (arr(11) != "null") {
         val pays: Array[String] = arr(11).split(",")
         pays.map(item => {
-          acc.add((arr(6),"pay"))
+          acc.add((item,"pay"))
           (item, (0, 0, 1))
         })
       } else {
         Nil
       }
     })
-
-    for (elem <- flaMapRDD.take(10)) {
-      println(elem)
-    }
+    flaMapRDD.collect()
+   acc.value.toList.sortWith((e1,e2) => {
+     if(e1._2.point > e2._2.point) {
+       true
+     }else if(e1._2.point == e2._2.point) {
+       if(e1._2.order > e2._2.order) {
+         true
+       }else if(e1._2.order == e2._2.order) {
+         if(e1._2.pay == e2._2.pay) {
+           true
+         }else {
+           false
+         }
+       }else {
+         false
+       }
+     }else {
+       false
+     }
+    }).take(10).foreach(println)
     sc.stop()
   }
 
-  case class OneAction(var point:Int, order:Int,var pay:Int)
+  case class OneAction(var point:Int, var order:Int,var pay:Int)
 
   class MyAcc extends AccumulatorV2[(String,String),mutable.Map[String,OneAction]] {
 
@@ -91,6 +107,7 @@ object Spark_01_Case_03 {
     }
 
     override def add(v: (String, String)): Unit = {
+      println("ac")
       v match {
         case (id,ac) => {
           val action: OneAction = wcMap.getOrElse(id, OneAction(0, 0, 0))
