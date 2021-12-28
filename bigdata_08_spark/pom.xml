@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>01_spark_core</module>
+        <module>02_spark_sql</module>
     </modules>
 
 
