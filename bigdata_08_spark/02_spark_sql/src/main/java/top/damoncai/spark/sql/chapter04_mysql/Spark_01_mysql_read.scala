@@ -19,7 +19,7 @@ object Spark_01_mysql_read {
 
     //方式 1：通用的 load 方法读取
     spark.read.format("jdbc")
-      .option("url", "jdbc:mysql://linux1:3306/spark-sql")
+      .option("url", "jdbc:mysql://127.0.0.1:3306/spark_sql")
       .option("driver", "com.mysql.jdbc.Driver")
       .option("user", "root")
       .option("password", "zhishun.cai")
@@ -29,7 +29,7 @@ object Spark_01_mysql_read {
     //方式 2:通用的 load 方法读取 参数另一种形式
     spark.read.format("jdbc")
       .options(Map(
-        "url"->"jdbc:mysql://linux1:3306/spark-sql?user=root&password=zhishun.cai",
+        "url"->"jdbc:mysql://127.0.0.1:3306/spark_sql?user=root&password=zhishun.cai",
         "dbtable"->"user",
         "driver"->"com.mysql.jdbc.Driver"))
       .load().show
@@ -38,8 +38,7 @@ object Spark_01_mysql_read {
     val props: Properties = new Properties()
     props.setProperty("user", "root")
     props.setProperty("password", "zhishun.cai")
-    val df: DataFrame = spark.read.jdbc("jdbc:mysql://linux1:3306/spark-sql", "user", props)
+    val df: DataFrame = spark.read.jdbc("jdbc:mysql://127.0.0.1:3306/spark_sql", "user", props)
     df.show
-
   }
 }

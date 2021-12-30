@@ -16,14 +16,14 @@ object Spark_02_mysql_write {
 
     import spark.implicits._
 
-    val rdd: RDD[User2] = spark.sparkContext.makeRDD(List(User2("lisi", 20),
-      User2("zs", 30)))
+    val rdd: RDD[User2] = spark.sparkContext.makeRDD(List(User2(3,"王五"),
+      User2(4, "赵强")))
     val ds: Dataset[User2] = rdd.toDS
 
     //方式 1：通用的方式 format 指定写出类型
     ds.write
       .format("jdbc")
-      .option("url", "jdbc:mysql://linux1:3306/spark-sql")
+      .option("url", "jdbc:mysql://127.0.0.1:3306/spark_sql")
       .option("user", "root")
       .option("password", "zhishun.cai")
       .option("dbtable", "user")
@@ -33,11 +33,9 @@ object Spark_02_mysql_write {
     val props: Properties = new Properties()
     props.setProperty("user", "root")
     props.setProperty("password", "zhishun.cai")
-    ds.write.mode(SaveMode.Append).jdbc("jdbc:mysql://linux1:3306/spark-sql",
+    ds.write.mode(SaveMode.Append).jdbc("jdbc:mysql://127.0.0.1:3306/spark_sql",
       "user", props)
-
   }
-
-  case class User2(name: String, age: Long)
+  case class User2(id: Int, username: String)
 
 }
