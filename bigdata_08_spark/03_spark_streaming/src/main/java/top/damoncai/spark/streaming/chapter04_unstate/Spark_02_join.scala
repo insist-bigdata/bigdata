@@ -1,4 +1,4 @@
-package top.damoncai.spark.streaming.chapter03_unstate
+package top.damoncai.spark.streaming.chapter04_unstate
 
 import org.apache.spark.SparkConf
 import org.apache.spark.rdd.RDD
