@@ -17,6 +17,7 @@
         <module>bigdata_06_azkaban</module>
         <module>bigdata_07_scala</module>
         <module>bigdata_08_spark</module>
+        <module>bigdata_20dw4</module>
     </modules>
 
 
