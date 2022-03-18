@@ -24,10 +24,14 @@ object Spark_22_aggregateByKey {
     // 0:("a",1),("a",2),("c",3) => (a,10)(c,10)
     //                                           => (a,10)(b,10)(c,20)
     // 1:("b",4),("c",5),("c",6) => (b,10)(c,10)
-    rdd.aggregateByKey(0)(
-      (x,y) => math.max(x,y),
-      (x,y) => x + y
+    val value: RDD[(String, Int)] = rdd.aggregateByKey(1)(
+      (x, y) => {
+        println(s"x:$x,y:$y")
+        math.max(x, y)
+      },
+      (x, y) => x + y
     )
+    value.collect().foreach(println)
     sc.stop()
   }
 }

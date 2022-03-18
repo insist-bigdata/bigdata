@@ -16,7 +16,6 @@ object Spark_01_wordcount {
 
     //3.通过监控端口创建DStream,读取进来的数据是一行一行
     val wordStream: ReceiverInputDStream[String] = ssc.socketTextStream("ha01.prdigital.cn", 9999)
-
     //4.将没一行数据切分
     val wsStreams: DStream[(String, Int)] = wordStream
       .flatMap(_.split(" "))

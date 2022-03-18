@@ -11,6 +11,7 @@ object Spark_02_File {
 
     // 创建Spark运行配置对象
     val sparkConf = new SparkConf().setMaster("local[*]").setAppName("RDD")
+
     //创建Spark上下文对象
     val sc = new SparkContext(sparkConf)
 

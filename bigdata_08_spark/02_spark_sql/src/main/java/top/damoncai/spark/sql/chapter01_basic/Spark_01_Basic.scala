@@ -34,9 +34,11 @@ object Spark_01_Basic {
     val rdd: RDD[(String, Int)] = spark.sparkContext.makeRDD(List(("张三", 3), ("李四", 40)))
     val rddDF: DataFrame = rdd.toDF("username", "age")
     rddDF.show()
+
     val dfRdd: RDD[Row] = rddDF.rdd
 
     println("=" * 10 + " RDD <=> DataSet " + "=" * 10)
+
     // RDD <=> DataSet
     val rddDS: Dataset[User] = rdd.map(item => {
       item match {
@@ -47,6 +49,7 @@ object Spark_01_Basic {
     val dsRDD: RDD[User] = rddDS.rdd
 
     println("=" * 10 + " DataFrame <=> DataSet " + "=" * 10)
+
     // DataFrame <=> DataSet
     val dfDS: Dataset[User] = df.as[User]
     dfDS.show()

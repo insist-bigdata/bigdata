@@ -22,6 +22,7 @@ object Spark_01_Memory {
 
     println("=" * 10)
 
+    // 底层parallelize
     val value2: RDD[Int] = sc.makeRDD(list)
 
     value2.collect().foreach(println);

@@ -12,7 +12,7 @@ object Demo_09_ControlAbstract {
     }
     fun("damoncai")
 
-    // 控制抽象 - 传名参数
+    // 控制抽象 - 传名参数 - 传递的是代码块
     println("========================================")
     def func(arg: => Int): Unit = {
       println("arg: " + arg)

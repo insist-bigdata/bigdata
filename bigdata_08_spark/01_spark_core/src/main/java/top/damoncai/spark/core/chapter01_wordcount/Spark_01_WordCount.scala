@@ -13,7 +13,7 @@ object Spark_01_WordCount {
 
     // 业务逻辑
     //1.读取文件数据
-    val wordRDD:RDD[String] = sparkContext.textFile("bigdata_08_spark/datas")
+    val wordRDD:RDD[String] = sparkContext.textFile("bigdata_08_spark/datas/demo/hello.txt")
     // 扁平化
     val wordFlatMapRDD: RDD[String] = wordRDD.flatMap(_.split(" "))
     // 分组

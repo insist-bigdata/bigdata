@@ -11,7 +11,6 @@ object Spark_17_sortBy {
     val sc = new SparkContext(sparkConf)
 
     val rdd: RDD[Int] = sc.makeRDD(List(6, 2, 4, 3, 5, 6), 2)
-    val value: RDD[Int] = rdd.sortBy(num => num)
 
     // 第二个参数传递false，降序排序
     val value2: RDD[Int] = rdd.sortBy(num => num,false)

@@ -6,10 +6,10 @@ object Demo_03_Generics {
     var co:MyCollection[Parent] = new MyCollection[Child]();
   }
 }
-
-class Parent{}
-class Child extends Parent{}
-class SubChild extends Child{}
+//
+//class Parent{}
+//class Child extends Parent{}
+//class SubChild extends Child{}
 
 // 定义带泛型的集合类型
 class MyCollection[+E]{}

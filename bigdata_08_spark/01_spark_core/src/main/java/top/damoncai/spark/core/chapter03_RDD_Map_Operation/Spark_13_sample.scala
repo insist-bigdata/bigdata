@@ -25,7 +25,6 @@ object Spark_13_sample {
     // 第二个参数：重复数据的几率，范围大于等于 0.表示每一个元素被期望抽取到的次数
     // 第三个参数：随机数种子
     val dataRDD2 = dataRDD.sample(true, 2)
-
     sc.stop()
   }
 }

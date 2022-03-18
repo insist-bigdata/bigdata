@@ -8,6 +8,7 @@ object Demo_05_HighOperation {
       a+b
     }
 
+
     // 1.函数作为值传递
 
     def fun1 = fun _;
