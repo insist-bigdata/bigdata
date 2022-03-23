@@ -43,13 +43,14 @@ public class Demo_03_Source_Customer {
             String[] urls = {"./home", "./cart", "./fav", "./prod?id=1", "./prod?id=2"};
 
             while (running) {
-                ctx.collect(new Event(
+                Event event = new Event(
                         users[random.nextInt(users.length)],
                         urls[random.nextInt(urls.length)],
-                        Calendar.getInstance().getTimeInMillis()
-                ));
+                        Calendar.getInstance().getTimeInMillis());
+//                System.out.println("生成数据：" + event);
+                ctx.collect(event);
                 // 隔 2 秒生成一个点击事件，方便观测
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             }
         }
 
