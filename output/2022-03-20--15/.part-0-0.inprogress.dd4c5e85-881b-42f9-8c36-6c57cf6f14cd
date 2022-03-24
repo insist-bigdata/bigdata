@@ -1,0 +1,5 @@
+Event{user='Bob', url='./prod?id=2', timestamp={SysUpTime = 0:0:25} {Timestamp = Sun Mar 20 15:04:14 CST 2022}}
+Event{user='Alice', url='./prod?id=300', timestamp={SysUpTime = 0:0:36} {Timestamp = Sun Mar 20 15:04:14 CST 2022}}
+Event{user='Bob', url='./home', timestamp={SysUpTime = 0:0:30} {Timestamp = Sun Mar 20 15:04:14 CST 2022}}
+Event{user='Bob', url='./prod?id=3', timestamp={SysUpTime = 0:0:33} {Timestamp = Sun Mar 20 15:04:14 CST 2022}}
+Event{user='Bob', url='./cart', timestamp={SysUpTime = 0:0:20} {Timestamp = Sun Mar 20 15:04:14 CST 2022}}
