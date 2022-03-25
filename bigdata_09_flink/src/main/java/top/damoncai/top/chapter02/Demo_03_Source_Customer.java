@@ -50,7 +50,7 @@ public class Demo_03_Source_Customer {
 //                System.out.println("生成数据：" + event);
                 ctx.collect(event);
                 // 隔 2 秒生成一个点击事件，方便观测
-                Thread.sleep(1000);
+                Thread.sleep(2000);
             }
         }
 
