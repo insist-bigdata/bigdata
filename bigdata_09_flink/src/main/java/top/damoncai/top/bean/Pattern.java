@@ -21,4 +21,9 @@ public class Pattern {
         this.pattern1 = pattern1;
         this.pattern2 = pattern2;
     }
+
+    @Override
+    public String toString() {
+        return pattern1 + " - " + pattern2;
+    }
 }
