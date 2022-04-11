@@ -44,7 +44,7 @@ public class Demo_05_Sink_MySQL {
                 new Event("Bob", "./prod?id=3", 3300L));
         stream.addSink(
                 JdbcSink.sink(
-                        "INSERT INTO clicks (user, url) VALUES (?, ?)",
+                        "INSERT INTO clicks.txt (user, url) VALUES (?, ?)",
                         (statement, r) -> {
                             statement.setString(1, r.user);
                             statement.setString(2, r.url);

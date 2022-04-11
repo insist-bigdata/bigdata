@@ -30,10 +30,10 @@ public class Demo_02_Sink_Kafka {
         env.setParallelism(1);
         Properties properties = new Properties();
         properties.put("bootstrap.servers", "ha01:9092");
-        DataStreamSource<String> stream = env.readTextFile("input/clicks.csv");
+        DataStreamSource<String> stream = env.readTextFile("input/clicks.txt.csv");
         stream
                 .addSink(new FlinkKafkaProducer<String>(
-                        "clicks",
+                        "clicks.txt",
                         new SimpleStringSchema(),
                         properties
                 ));

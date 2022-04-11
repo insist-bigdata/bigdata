@@ -51,7 +51,7 @@ public class Demo_04_Sink_ES {
                         HashMap<String, String> data = new HashMap<>();
                         data.put(element.user, element.url);
                         IndexRequest request = Requests.indexRequest()
-                                .index("clicks")
+                                .index("clicks.txt")
                                 .type("type") // Es 6 必须定义 type
                                 .source(data);
                         indexer.add(request);

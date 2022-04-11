@@ -43,7 +43,7 @@ public class Demo_03_Sink_Redis {
         }
         @Override
         public RedisCommandDescription getCommandDescription() {
-            return new RedisCommandDescription(RedisCommand.HSET, "clicks");
+            return new RedisCommandDescription(RedisCommand.HSET, "clicks.txt");
         }
     }
 }
